@@ -24,8 +24,8 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 const options = {
-    key: fs.readFileSync('/data/ist411.key'),
-    cert: fs.readFileSync('/data/ist411.cert')
+    key: fs.readFileSync('/data/ist411-2024.key'),
+    cert: fs.readFileSync('/data/ist411-2024.cert')
 };
 
 const server = https.createServer(options, app);
