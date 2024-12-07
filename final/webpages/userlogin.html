@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="userApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body ng-controller="UserController">
+    <h1>User Login</h1>
+    <form ng-submit="loginUser()">
+        <input type="text" ng-model="newUser.name" placeholder="Name" required>
+        <input type="number" ng-model="newUser.age" placeholder="Age" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <div ng-if="errorMessage" style="color:red">{{errorMessage}}</div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

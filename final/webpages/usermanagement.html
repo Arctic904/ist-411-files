@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="userApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operations</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body ng-controller="UserController">
+    <h1>CRUD Operations for Users</h1>
+
+    <h2>Create User</h2>
+    <form ng-submit="addUser()">
+        <input type="text" ng-model="newUser.name" placeholder="Name" required>
+        <input type="number" ng-model="newUser.age" placeholder="Age" required>
+        <button type="submit">Create</button>
+    </form>
+
+    <h2>Read User</h2>
+    <form ng-submit="readUser(user.id)">
+        <input type="text" ng-model="user.id" placeholder="User ID" required>
+        <button type="submit">Read</button>
+    </form>
+    <div id="read-result"></div>
+
+    <h2>Update User</h2>
+    <form ng-submit="updateUser()">
+        <input type="text" ng-model="editUser.id" placeholder="User ID" required>
+        <input type="text" ng-model="editUser.name" placeholder="New Name">
+        <input type="number" ng-model="editUser.age" placeholder="New Age">
+        <button type="submit">Update</button>
+    </form>
+
+    <h2>Delete User</h2>
+    <form ng-submit="deleteUser(user.id)">
+        <input type="text" ng-model="user.id" placeholder="User ID" required>
+        <button type="submit">Delete</button>
+    </form>
+
+    <div ng-if="errorMessage" style="color:red">{{errorMessage}}</div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

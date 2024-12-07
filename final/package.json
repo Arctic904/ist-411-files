@@ -1,0 +1,16 @@
+{
+    "name": "name",
+    "description": "description",
+    "authors": "author",
+    "version": "1.0.0",
+    "main": "pathToMain",
+    "dependencies": {
+        "axios": "^1.7.7",
+        "body-parser": "^1.20.3",
+        "cors": "^2.8.5",
+        "express": "^4.21.2",
+        "https": "^1.0.0",
+        "jasmine": "^5.4.0",
+        "mongoose": "^8.8.4"
+    }
+}
