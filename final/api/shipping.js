@@ -6,7 +6,7 @@ module.exports = {
             try {
                 const bodyOrder = new Shipping(req.body);
                 await bodyOrder.save();
-                return res.status(200).send(bodyOrder)
+                return res.status(201).send(bodyOrder)
             } catch (err) {
                 res.status(400).send(err)
             }
