@@ -5,7 +5,8 @@
     "version": "1.0.0",
     "main": "appStorefront.js",
     "scripts": {
-        "test": "npx jasmine ./tests/*.js --random=false"
+        "test": "npx jasmine ./tests/*.js --random=false",
+        "start": "node appStorefront.js"
     },
     "dependencies": {
         "axios": "^1.7.7",
