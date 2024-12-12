@@ -98,7 +98,7 @@ describe("Shipping Delete CRUD API", () => {
             // Verify order is deleted
             try {
                 const res = await axios.get(`${readUrl}/${createdShippingId}`, { httpsAgent: agent });
-                console.log(`Got info ${res}`)
+                console.log(`Got info ${JSON.stringify(res)}`)
                 fail("Shipping should have been deleted");
             } catch (error) {
                 expect(error.response.status).toBe(404); // Assuming 404 Not Found for non-existing order
