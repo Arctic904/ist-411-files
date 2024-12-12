@@ -29,7 +29,7 @@ module.exports = {
 
         app.delete("/delete-order/:id", async (req, res) => {
             try {
-                const ship = Shipping.findByIdAndDelete(req.params.id);
+                const ship = await Shipping.findByIdAndDelete(req.params.id);
                 if (!ship) {
                     return res.status(404).send();
                 }

@@ -40,7 +40,8 @@ app.controller('UserController', function ($scope) {
             type: 'GET',
             success: function (data) {
                 $scope.$apply(function () {
-                    $('#read-result').html('Name: ' + data.name + ', Age: ' + data.age);
+                    console.log(data)
+                    $('#read-result').html(JSON.stringify(data))
                 });
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -161,7 +162,7 @@ app.controller('UserLoginController', function ($scope) {
             type: 'GET',
             success: function (data) {
                 $scope.$apply(function () {
-                    $('#read-result').html('Name: ' + data.name + ', Age: ' + data.age);
+                    $('#read-result').html(JSON.stringify(data))
                 });
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -258,7 +259,7 @@ app.controller('OrderController', function ($scope) {
             type: 'GET',
             success: function (data) {
                 $scope.$apply(function () {
-                    $('#read-result').html('Name: ' + data.name + ', Age: ' + data.age);
+                    $('#read-result').html(JSON.stringify(data))
                 });
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -355,7 +356,7 @@ app.controller('ReturnController', function ($scope) {
             type: 'GET',
             success: function (data) {
                 $scope.$apply(function () {
-                    $('#read-result').html('Name: ' + data.name + ', Age: ' + data.age);
+                    $('#read-result').html(JSON.stringify(data))
                 });
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -452,7 +453,7 @@ app.controller('ProductController', function ($scope) {
             type: 'GET',
             success: function (data) {
                 $scope.$apply(function () {
-                    $('#read-result').html('Name: ' + data.name + ', Age: ' + data.age);
+                    $('#read-result').html(JSON.stringify(data))
                 });
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -549,7 +550,7 @@ app.controller('CartController', function ($scope) {
             type: 'GET',
             success: function (data) {
                 $scope.$apply(function () {
-                    $('#read-result').html('Name: ' + data.name + ', Age: ' + data.age);
+                    $('#read-result').html(JSON.stringify(data))
                 });
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -646,7 +647,7 @@ app.controller('BillController', function ($scope) {
             type: 'GET',
             success: function (data) {
                 $scope.$apply(function () {
-                    $('#read-result').html('Name: ' + data.name + ', Age: ' + data.age);
+                    $('#read-result').html(JSON.stringify(data))
                 });
             },
             error: function (jqXHR, textStatus, errorThrown) {
