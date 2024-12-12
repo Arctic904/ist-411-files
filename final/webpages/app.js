@@ -1,4 +1,4 @@
-var app = angular.module('userApp', []);
+var app = angular.module('userApp', ["ngRoute"]);
 const port = 3004;
 const baseUrl = `https://ist411.up.ist.psu.edu:${port}`
 

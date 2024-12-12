@@ -46,6 +46,7 @@ const billSchema = new mongoose.Schema({
     userId: String,
     address: String,
 });
+
 module.exports = {
     User: mongoose.model('UsersZanoni', userSchema),
     UserLogin: mongoose.model('UserLoginsZanoni', userLoginSchema),
