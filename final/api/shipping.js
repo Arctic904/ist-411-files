@@ -1,4 +1,5 @@
-import { Shipping } from "./models"
+const { Shipping } = require("./models")
+
 export let createEndpoints = (app) => {
     app.post("/create-order", async (req, res) => {
         try {

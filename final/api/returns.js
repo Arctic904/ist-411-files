@@ -1,4 +1,4 @@
-import { Return } from "./models";
+const { Return } = require("./models")
 
 export let createEndpoints = (app) => {
     app.post('/create-return', async (req, res) => {

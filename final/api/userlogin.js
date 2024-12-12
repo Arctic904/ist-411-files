@@ -1,4 +1,4 @@
-import { UserLogin } from "./models"
+const { UserLogin } = require("./models")
 export let createEndpoints = (app) => {
     app.post("/login", async (req, res) => {
         try {

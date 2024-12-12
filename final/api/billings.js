@@ -1,4 +1,4 @@
-import { Bill } from "./models";
+const { Bill } = require("./models")
 
 export let createEndpoints = (app) => {
     app.post('/create-bill', async (req, res) => {

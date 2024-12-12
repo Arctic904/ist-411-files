@@ -1,4 +1,4 @@
-import { Product } from "./models";
+const { Product } = require("./models")
 
 export let createEndpoints = (app) => {
     app.post('/create-product', async (req, res) => {

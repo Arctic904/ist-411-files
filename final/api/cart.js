@@ -1,4 +1,4 @@
-import { Cart } from "./models";
+const { Cart } = require("./models")
 
 export let createEndpoints = (app) => {
     app.post('/create-cart', async (req, res) => {
