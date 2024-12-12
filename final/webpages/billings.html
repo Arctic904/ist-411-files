@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="billApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operations</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body ng-controller="BillController">
+    <h1>CRUD Operations for Bills</h1>
+
+    <h2>Create Bill</h2>
+    <form ng-submit="addBill()">
+        <input type="number" ng-model="newBill.price" placeholder="Price" required>
+        <input type="number" ng-model="newBill.quantity" placeholder="Quantity" required>
+        <input type="text" ng-model="newBill.userId" placeholder="UserId" required>
+        <input type="text" ng-model="newBill.address" placeholder="Address" required>
+        <button type="submit">Create</button>
+    </form>
+
+    <h2>Read Bill</h2>
+    <form ng-submit="readBill(bill.id)">
+        <input type="text" ng-model="bill.id" placeholder="Bill ID" required>
+        <button type="submit">Read</button>
+    </form>
+    <div id="read-result"></div>
+
+    <h2>Update Bill</h2>
+    <form ng-submit="updateBill()">
+        <input type="text" ng-model="editBill.id" placeholder="Bill ID" required>
+        <input type="number" ng-model="editBill.price" placeholder="Price">
+        <input type="number" ng-model="editBill.quantity" placeholder="Quantity">
+        <input type="text" ng-model="editBill.userId" placeholder="UserId">
+        <input type="text" ng-model="editBill.address" placeholder="Address">
+        <button type="submit">Update</button>
+    </form>
+
+    <h2>Delete Bill</h2>
+    <form ng-submit="deleteBill(bill.id)">
+        <input type="text" ng-model="bill.id" placeholder="Bill ID" required>
+        <button type="submit">Delete</button>
+    </form>
+
+    <div ng-if="errorMessage" style="color:red">{{errorMessage}}</div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

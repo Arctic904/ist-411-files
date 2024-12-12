@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="orderApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operations</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body ng-controller="OrderController">
+    <h1>CRUD Operations for Orders</h1>
+
+    <h2>Create Order</h2>
+    <form ng-submit="addOrder()">
+        <input type="text" ng-model="newOrder.address" placeholder="Address" required>
+        <input type="text" ng-model="newOrder.user" placeholder="User" required>
+        <input type="text" ng-model="newOrder.date" placeholder="Date" required>
+        <button type="submit">Create</button>
+    </form>
+
+    <h2>Read Order</h2>
+    <form ng-submit="readOrder(order.id)">
+        <input type="text" ng-model="order.id" placeholder="Order ID" required>
+        <button type="submit">Read</button>
+    </form>
+    <div id="read-result"></div>
+
+    <h2>Update Order</h2>
+    <form ng-submit="updateOrder()">
+        <input type="text" ng-model="editOrder.id" placeholder="Order ID" required>
+        <input type="text" ng-model="editOrder.address" placeholder="New Address">
+        <input type="text" ng-model="editOrder.user" placeholder="New User">
+        <input type="text" ng-model="editOrder.date" placeholder="New Date">
+        <button type="submit">Update</button>
+    </form>
+
+    <h2>Delete Order</h2>
+    <form ng-submit="deleteOrder(order.id)">
+        <input type="text" ng-model="order.id" placeholder="Order ID" required>
+        <button type="submit">Delete</button>
+    </form>
+
+    <div ng-if="errorMessage" style="color:red">{{errorMessage}}</div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

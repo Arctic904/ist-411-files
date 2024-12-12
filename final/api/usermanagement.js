@@ -1,4 +1,6 @@
-export let createUserManageEndpoints = (app) => {
+import { User } from "./models";
+
+export let createEndpoints = (app) => {
     app.post('/create-user', async (req, res) => {
         try {
             const user = new User(req.body);

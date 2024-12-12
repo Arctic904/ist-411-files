@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="cartApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operations</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body ng-controller="CartController">
+    <h1>CRUD Operations for Carts</h1>
+
+    <h2>Create Cart</h2>
+    <form ng-submit="addCart()">
+        <input type="text" ng-model="newCart.productId" placeholder="Product" required>
+        <input type="number" ng-model="newCart.quantity" placeholder="Quantity" required>
+        <input type="text" ng-model="newCart.userId" placeholder="User" required>
+        <button type="submit">Create</button>
+    </form>
+
+    <h2>Read Cart</h2>
+    <form ng-submit="readCart(cart.id)">
+        <input type="text" ng-model="cart.id" placeholder="Cart ID" required>
+        <button type="submit">Read</button>
+    </form>
+    <div id="read-result"></div>
+
+    <h2>Update Cart</h2>
+    <form ng-submit="updateCart()">
+        <input type="text" ng-model="editCart.id" placeholder="Cart ID" required>
+        <input type="text" ng-model="editCart.productId" placeholder="New Product">
+        <input type="text" ng-model="editCart.userId" placeholder="New UserId">
+        <input type="number" ng-model="editCart.quantity" placeholder="New Quantity">
+        <button type="submit">Update</button>
+    </form>
+
+    <h2>Delete Cart</h2>
+    <form ng-submit="deleteCart(cart.id)">
+        <input type="text" ng-model="cart.id" placeholder="Cart ID" required>
+        <button type="submit">Delete</button>
+    </form>
+
+    <div ng-if="errorMessage" style="color:red">{{errorMessage}}</div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

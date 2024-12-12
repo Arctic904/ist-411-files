@@ -1,9 +1,12 @@
 {
-    "name": "name",
-    "description": "description",
-    "authors": "author",
+    "name": "ist411-final",
+    "description": "IST 411 Final Project",
+    "authors": "rjz5227",
     "version": "1.0.0",
-    "main": "pathToMain",
+    "main": "appStorefront.js",
+    "scripts": {
+        "test": "npx jasmine ./tests/*.js"
+    },
     "dependencies": {
         "axios": "^1.7.7",
         "body-parser": "^1.20.3",

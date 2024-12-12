@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="returnApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operations</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body ng-controller="ReturnController">
+    <h1>CRUD Operations for Returns</h1>
+
+    <h2>Create Return</h2>
+    <form ng-submit="addReturn()">
+        <input type="text" ng-model="newReturn.productId" placeholder="Product" required>
+        <input type="text" ng-model="newReturn.user" placeholder="User" required>
+        <input type="text" ng-model="newReturn.date" placeholder="Date" required>
+        <input type="text" ng-model="newReturn.reason" placeholder="Reason" required>
+        <button type="submit">Create</button>
+    </form>
+
+    <h2>Read Return</h2>
+    <form ng-submit="readReturn(return.id)">
+        <input type="text" ng-model="return.id" placeholder="Return ID" required>
+        <button type="submit">Read</button>
+    </form>
+    <div id="read-result"></div>
+
+    <h2>Update Return</h2>
+    <form ng-submit="updateReturn()">
+        <input type="text" ng-model="editReturn.id" placeholder="Return ID" required>
+        <input type="text" ng-model="editReturn.productId" placeholder="New Product">
+        <input type="text" ng-model="editReturn.user" placeholder="New User">
+        <input type="text" ng-model="editReturn.date" placeholder="New Date">
+        <input type="text" ng-model="editReturn.reason" placeholder="New Reason">
+        <button type="submit">Update</button>
+    </form>
+
+    <h2>Delete Return</h2>
+    <form ng-submit="deleteReturn(return.id)">
+        <input type="text" ng-model="return.id" placeholder="Return ID" required>
+        <button type="submit">Delete</button>
+    </form>
+
+    <div ng-if="errorMessage" style="color:red">{{errorMessage}}</div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

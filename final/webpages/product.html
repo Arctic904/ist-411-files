@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="productApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operations</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body ng-controller="ProductController">
+    <h1>CRUD Operations for Products</h1>
+
+    <h2>Create Product</h2>
+    <form ng-submit="addProduct()">
+        <input type="text" ng-model="newProduct.name" placeholder="Name" required>
+        <input type="text" ng-model="newProduct.description" placeholder="Description" required>
+        <button type="submit">Create</button>
+    </form>
+
+    <h2>Read Product</h2>
+    <form ng-submit="readProduct(product.id)">
+        <input type="text" ng-model="product.id" placeholder="Product ID" required>
+        <button type="submit">Read</button>
+    </form>
+    <div id="read-result"></div>
+
+    <h2>Update Product</h2>
+    <form ng-submit="updateProduct()">
+        <input type="text" ng-model="editProduct.id" placeholder="Product ID" required>
+        <input type="text" ng-model="editProduct.name" placeholder="New Name">
+        <input type="text" ng-model="editProduct.description" placeholder="New Description">
+        <button type="submit">Update</button>
+    </form>
+
+    <h2>Delete Product</h2>
+    <form ng-submit="deleteProduct(product.id)">
+        <input type="text" ng-model="product.id" placeholder="Product ID" required>
+        <button type="submit">Delete</button>
+    </form>
+
+    <div ng-if="errorMessage" style="color:red">{{errorMessage}}</div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
