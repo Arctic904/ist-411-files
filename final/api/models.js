@@ -47,11 +47,11 @@ const billSchema = new mongoose.Schema({
     address: String,
 });
 module.exports = {
-    User: mongoose.model('User', userSchema),
-    UserLogin: mongoose.model('UserLogin', userLoginSchema),
-    Shipping: mongoose.model('Shipping', shippingSchema),
-    Return: mongoose.model('Return', returnSchema),
-    Product: mongoose.model('Product', productSchema),
-    Cart: mongoose.model('Cart', cartSchema),
-    Bill: mongoose.model('Bill', billSchema),
+    User: mongoose.model('UsersZanoni', userSchema),
+    UserLogin: mongoose.model('UserLoginsZanoni', userLoginSchema),
+    Shipping: mongoose.model('ShippingsZanoni', shippingSchema),
+    Return: mongoose.model('ReturnsZanoni', returnSchema),
+    Product: mongoose.model('ProductsZanoni', productSchema),
+    Cart: mongoose.model('CartsZanoni', cartSchema),
+    Bill: mongoose.model('BillsZanoni', billSchema),
 }
