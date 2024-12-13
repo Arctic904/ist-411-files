@@ -27,11 +27,13 @@ describe("Login Create CRUD API", () => {
                 createdObject,
                 { httpsAgent: agent }
             );
-
+            let tempPw = createdObject.password
+            createdObject.password = null
             expect(res.status).toBe(201);
             expect(res.data).toEqual(
-                jasmine.objectContaining(createdObject.username)
+                jasmine.objectContaining(createdObject)
             );
+            createdObject.password = tempPw
             createdLoginId = res.data._id;
             createdObject._id = createdLoginId;
             console.log("Created Login: ", res.data);
