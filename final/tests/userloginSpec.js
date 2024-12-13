@@ -13,7 +13,7 @@ const baseUrl = `https://ist411.up.ist.psu.edu:${port}`;
 
 let createdLoginId;
 let createdObject = {
-    user: "testuser",
+    username: "testuser",
     password: "securepassword"
 }
 

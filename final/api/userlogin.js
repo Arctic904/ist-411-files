@@ -18,9 +18,9 @@ module.exports = {
             try {
                 const bodyUser = new UserLogin(req.body);
                 await bodyUser.save()
-                return res.status(201).send(user.username)
+                return res.status(201).send(bodyUser.username)
             } catch (err) {
-                res.status(500).send(err)
+                res.status(400).send(err)
             }
         })
         app.get("/read-login/:id", async (req, res) => {
