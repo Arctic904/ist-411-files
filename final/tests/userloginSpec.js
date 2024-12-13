@@ -27,11 +27,10 @@ describe("Login Create CRUD API", () => {
                 createdObject,
                 { httpsAgent: agent }
             );
-            let tempPw = createdObject.password
-            createdObject.password = null
             expect(res.status).toBe(201);
-            expect(res.data).toEqual(createdObject.username);
-            createdObject.password = tempPw
+            expect(res.data).toEqual(
+                jasmine.objectContaining(createdObject)
+            );
             createdLoginId = res.data._id;
             createdObject._id = createdLoginId;
             console.log("Created Login: ", res.data);
@@ -55,9 +54,7 @@ describe("Login CRUD API", () => {
             );
 
             expect(res.status).toBe(200);
-            expect(res.data).toEqual(
-                jasmine.objectContaining(createdObject)
-            );
+            expect(res.data).toEqual(createdObject.username);
         } catch (err) {
             fail(err);
         }
