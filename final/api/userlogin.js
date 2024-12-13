@@ -18,7 +18,8 @@ module.exports = {
             try {
                 const bodyUser = new UserLogin(req.body);
                 await bodyUser.save()
-                return res.status(201).send(bodyUser.username)
+                bodyUser.password = null
+                return res.status(201).send(bodyUser)
             } catch (err) {
                 res.status(400).send(err)
             }

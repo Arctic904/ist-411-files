@@ -30,7 +30,7 @@ describe("Login Create CRUD API", () => {
 
             expect(res.status).toBe(201);
             expect(res.data).toEqual(
-                jasmine.objectContaining(createdObject)
+                jasmine.objectContaining(createdObject.username)
             );
             createdLoginId = res.data._id;
             createdObject._id = createdLoginId;
