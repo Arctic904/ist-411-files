@@ -141,7 +141,7 @@ app.controller('UserLoginController', function ($scope) {
     };
 
     // Register user
-    $scope.loginUser = function () {
+    $scope.createLogin = function () {
         console.log('Registering user', $scope.newUser); // Debugging log
         $.ajax({
             url: baseUrl + '/create-login',
@@ -165,7 +165,7 @@ app.controller('UserLoginController', function ($scope) {
     };
 
     // Read user
-    $scope.readUser = function (id) {
+    $scope.readLogin = function (id) {
         console.log('Reading user with id', id); // Debugging log
         $.ajax({
             url: baseUrl + '/read-login/' + id,
@@ -186,7 +186,7 @@ app.controller('UserLoginController', function ($scope) {
     };
 
     // Update user
-    $scope.updateUser = function () {
+    $scope.updateLogin = function () {
         console.log('Updating user', $scope.editUser); // Debugging log
         $.ajax({
             url: baseUrl + '/update-login/' + $scope.editUser.id,
@@ -210,7 +210,7 @@ app.controller('UserLoginController', function ($scope) {
     };
 
     // Delete user
-    $scope.deleteUser = function (id) {
+    $scope.deleteLogin = function (id) {
         console.log('Deleting user with id', id); // Debugging log
         $.ajax({
             url: baseUrl + '/delete-login/' + id,
