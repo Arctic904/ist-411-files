@@ -131,10 +131,10 @@ app.controller('UserLoginController', function ($scope) {
                 });
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                console.error('Error adding user:', errorThrown); // Debugging log
+                console.error('Error logging in user:', errorThrown); // Debugging log
                 $scope.$apply(function () {
-                    alert("Error adding user: " + errorThrown);
-                    $scope.errorMessage = "Error adding user: " + errorThrown;
+                    alert("Error logging in user: " + errorThrown);
+                    $scope.errorMessage = "Error logging in user: " + errorThrown;
                 });
             }
         });
