@@ -34,6 +34,7 @@ describe("Login Create CRUD API", () => {
                 jasmine.objectContaining(createdObject)
             );
             createdLoginId = res.data._id;
+            createdObject._id = createdLoginId;
             console.log("Created Login: ", res.data);
             console.log("Created Login Id: ", createdLoginId);
         } catch (err) {
@@ -47,6 +48,7 @@ describe("Login CRUD API", () => {
 
     it("Should login a user", async () => {
         try {
+            createdObject._id = null
             const res = await axios.post(
                 createUrl,
                 createdObject,
@@ -57,7 +59,6 @@ describe("Login CRUD API", () => {
             expect(res.data).toEqual(
                 jasmine.objectContaining(createdObject)
             );
-            createdObject._id = res.data._id
         } catch (err) {
             fail(err);
         }
