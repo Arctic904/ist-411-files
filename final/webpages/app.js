@@ -104,7 +104,14 @@ app.controller('UserLoginController', function ($scope) {
     $scope.newUser = {};
     $scope.editUser = {};
     $scope.user = {};
+    $scope.loggedInUser = {};
     $scope.errorMessage = '';
+
+    $scope.logoutUser() = function () {
+        console.log('Logging out user', $scope.loggedInUser)
+        $scope.loggedInUser = {};
+        $("#user").html("Signed Out")
+    }
 
     // Login user
     $scope.loginUser = function () {
@@ -117,6 +124,9 @@ app.controller('UserLoginController', function ($scope) {
             success: function (data) {
                 $scope.$apply(function () {
                     alert("User Logged In successfully");
+                    $scope.loggedInUser = $scope.newUser;
+                    $("#user").html(`Username: ${$scope.newUser.name}\nID: ${data._id}`)
+
                     $scope.newUser = {};
                 });
             },
@@ -134,7 +144,7 @@ app.controller('UserLoginController', function ($scope) {
     $scope.loginUser = function () {
         console.log('Registering user', $scope.newUser); // Debugging log
         $.ajax({
-            url: baseUrl + '/register',
+            url: baseUrl + '/create-login',
             type: 'POST',
             data: JSON.stringify($scope.newUser),
             contentType: 'application/json',
@@ -158,7 +168,7 @@ app.controller('UserLoginController', function ($scope) {
     $scope.readUser = function (id) {
         console.log('Reading user with id', id); // Debugging log
         $.ajax({
-            url: baseUrl + '/user/' + id,
+            url: baseUrl + '/read-login/' + id,
             type: 'GET',
             success: function (data) {
                 $scope.$apply(function () {
@@ -179,7 +189,7 @@ app.controller('UserLoginController', function ($scope) {
     $scope.updateUser = function () {
         console.log('Updating user', $scope.editUser); // Debugging log
         $.ajax({
-            url: baseUrl + '/user/' + $scope.editUser.id,
+            url: baseUrl + '/update-login/' + $scope.editUser.id,
             type: 'PATCH',
             data: JSON.stringify($scope.editUser),
             contentType: 'application/json',
@@ -203,7 +213,7 @@ app.controller('UserLoginController', function ($scope) {
     $scope.deleteUser = function (id) {
         console.log('Deleting user with id', id); // Debugging log
         $.ajax({
-            url: baseUrl + '/user/' + id,
+            url: baseUrl + '/delete-login/' + id,
             type: 'DELETE',
             success: function () {
                 $scope.$apply(function () {

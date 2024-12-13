@@ -14,7 +14,7 @@ module.exports = {
                 res.status(500).send(err)
             }
         })
-        app.post("/register", async (req, res) => {
+        app.post("/create-login", async (req, res) => {
             try {
                 const bodyUser = new UserLogin(req.body);
                 const user = await UserLogin.create(bodyUser)
@@ -26,7 +26,7 @@ module.exports = {
                 res.status(500).send(err)
             }
         })
-        app.get("/user/:id", async (req, res) => {
+        app.get("/read-login/:id", async (req, res) => {
             try {
                 const user = await UserLogin.findById(req.params.id)
                 if (!user) {
@@ -37,7 +37,7 @@ module.exports = {
                 res.status(400).send(err);
             }
         })
-        app.patch("/user/:id", async (req, res) => {
+        app.patch("/update-login/:id", async (req, res) => {
             try {
                 const user = await UserLogin.findByIdAndUpdate(req.params.id, req.body, {
                     new: true,
@@ -51,7 +51,7 @@ module.exports = {
                 res.status(400).send(err);
             }
         })
-        app.delete("/user/:id", async (req, res) => {
+        app.delete("/delete-login/:id", async (req, res) => {
             try {
                 const user = await UserLogin.findByIdAndDelete(req.params.id);
                 if (!user) {
