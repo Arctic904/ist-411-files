@@ -4,8 +4,7 @@ module.exports = {
     createEndpoints: (app) => {
         app.post("/login", async (req, res) => {
             try {
-                const bodyUser = new UserLogin(req.body);
-                const user = await UserLogin.findOne(bodyUser)
+                const user = await UserLogin.findOne({ username: req.body.username, password: req.body.password })
                 if (!user) {
                     return res.status(404)
                 }
