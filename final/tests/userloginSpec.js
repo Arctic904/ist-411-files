@@ -11,55 +11,72 @@ const agent = new https.Agent({
 const port = 3004;
 const baseUrl = `https://ist411.up.ist.psu.edu:${port}`;
 
-let createdUserId;
+let createdLoginId;
+let createdObject = {
+    address: `1234 test st. sc pa 16803`,
+    user: `idaklsdfo129375`,
+    date: `12/12/12`,
+}
 
-describe("User Create CRUD API", () => {
-    const createUrl = `${baseUrl}/create-user`;
+describe("Login Create CRUD API", () => {
+    const createUrl = `${baseUrl}/create-login`;
 
-    it("Should create a new user", async () => {
+    it("Should create a new login", async () => {
         try {
             const res = await axios.post(
                 createUrl,
-                {
-                    name: `John Doe`,
-                    age: 30,
-                },
+                createdObject,
                 { httpsAgent: agent }
             );
 
             expect(res.status).toBe(201);
             expect(res.data).toEqual(
-                jasmine.objectContaining({
-                    name: `John Doe`,
-                    age: 30,
-                })
+                jasmine.objectContaining(createdObject)
             );
-            createdUserId = res.data._id;
-            console.log("Created User: ", res.data);
-            console.log("Created User Id: ", createdUserId);
+            createdLoginId = res.data._id;
+            console.log("Created Login: ", res.data);
+            console.log("Created Login Id: ", createdLoginId);
         } catch (err) {
             fail(err);
         }
     });
 });
 
-describe("User Read CRUD API", () => {
-    const readUrl = `${baseUrl}/read-user`;
-    console.log(createdUserId);
+describe("Login CRUD API", () => {
+    const createUrl = `${baseUrl}/login`;
 
-    it("Should read the created user", async () => {
+    it("Should login a user", async () => {
         try {
-            const res = await axios.get(`${readUrl}/${createdUserId}`, {
+            const res = await axios.post(
+                createUrl,
+                createdObject,
+                { httpsAgent: agent }
+            );
+
+            expect(res.status).toBe(201);
+            expect(res.data).toEqual(
+                jasmine.objectContaining(createdObject)
+            );
+            createdObject._id = res.data._id
+        } catch (err) {
+            fail(err);
+        }
+    });
+});
+
+describe("Login Read CRUD API", () => {
+    const readUrl = `${baseUrl}/read-login`;
+    console.log(createdLoginId);
+
+    it("Should read the created login", async () => {
+        try {
+            const res = await axios.get(`${readUrl}/${createdLoginId}`, {
                 httpsAgent: agent,
             });
 
             expect(res.status).toBe(200);
             expect(res.data).toEqual(
-                jasmine.objectContaining({
-                    _id: createdUserId,
-                    name: `John Doe`,
-                    age: 30,
-                })
+                jasmine.objectContaining(createdObject)
             );
         } catch (err) {
             fail(err);
@@ -67,26 +84,20 @@ describe("User Read CRUD API", () => {
     });
 });
 
-describe("User Update CRUD API", () => {
-    const updateUrl = `${baseUrl}/update-user`;
-    it("should update the created user", async () => {
+describe("Login Update CRUD API", () => {
+    const updateUrl = `${baseUrl}/update-login`;
+    createdObject.date = `12/13/12`
+    it("should update the created login", async () => {
         try {
             const response = await axios.patch(
-                `${updateUrl}/${createdUserId}`,
-                {
-                    name: "Jane Doe",
-                    age: 25,
-                },
+                `${updateUrl}/${createdLoginId}`,
+                createdObject,
                 { httpsAgent: agent }
             );
 
             expect(response.status).toBe(200);
             expect(response.data).toEqual(
-                jasmine.objectContaining({
-                    _id: createdUserId,
-                    name: "Jane Doe",
-                    age: 25,
-                })
+                jasmine.objectContaining(createdObject)
             );
         } catch (error) {
             fail(error);
@@ -94,23 +105,24 @@ describe("User Update CRUD API", () => {
     });
 });
 
-describe("User Delete CRUD API", () => {
-    const deleteUrl = `${baseUrl}/delete-user`;
-    const readUrl = `${baseUrl}/read-user`;
-    console.log(createdUserId);
-    it("should delete the created user", async () => {
+describe("Login Delete CRUD API", () => {
+    const deleteUrl = `${baseUrl}/delete-login`;
+    const readUrl = `${baseUrl}/read-login`;
+    console.log(createdLoginId);
+    it("should delete the created login", async () => {
         try {
-            const response = await axios.delete(`${deleteUrl}/${createdUserId}`, {
+            const response = await axios.delete(`${deleteUrl}/${createdLoginId}`, {
                 httpsAgent: agent,
             });
 
             expect(response.status).toBe(200); //Assuming 200 no content on successful deletion
-            // Verify user is deleted
+            // Verify login is deleted
             try {
-                await axios.get(`${readUrl}/${createdUserId}`, { httpsAgent: agent });
-                fail("User should have been deleted");
+                const res = await axios.get(`${readUrl}/${createdLoginId}`, { httpsAgent: agent });
+                console.log(`Got info ${JSON.stringify(res.status)}`)
+                fail("Login should have been deleted");
             } catch (error) {
-                expect(error.response.status).toBe(404); // Assuming 404 Not Found for non-existing user
+                expect(error.response.status).toBe(404); // Assuming 404 Not Found for non-existing login
             }
         } catch (error) {
             fail(error);
