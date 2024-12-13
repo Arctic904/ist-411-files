@@ -13,9 +13,8 @@ const baseUrl = `https://ist411.up.ist.psu.edu:${port}`;
 
 let createdLoginId;
 let createdObject = {
-    address: `1234 test st. sc pa 16803`,
-    user: `idaklsdfo129375`,
-    date: `12/12/12`,
+    username: "testuser",
+    password: "securepassword"
 }
 
 describe("Login Create CRUD API", () => {
@@ -87,7 +86,7 @@ describe("Login Read CRUD API", () => {
 
 describe("Login Update CRUD API", () => {
     const updateUrl = `${baseUrl}/update-login`;
-    createdObject.date = `12/13/12`
+    createdObject.password = `createdpassword1`
     it("should update the created login", async () => {
         try {
             const response = await axios.patch(
