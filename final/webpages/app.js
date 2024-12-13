@@ -107,7 +107,7 @@ app.controller('UserLoginController', function ($scope) {
     $scope.loggedInUser = {};
     $scope.errorMessage = '';
 
-    $scope.logoutUser() = function () {
+    $scope.logoutUser = function () {
         console.log('Logging out user', $scope.loggedInUser)
         $scope.loggedInUser = {};
         $("#user").html("Signed Out")
@@ -115,19 +115,19 @@ app.controller('UserLoginController', function ($scope) {
 
     // Login user
     $scope.loginUser = function () {
-        console.log('Logging in user', $scope.newUser); // Debugging log
+        console.log('Logging in user', $scope.editUser); // Debugging log
         $.ajax({
             url: baseUrl + '/login',
             type: 'POST',
-            data: JSON.stringify($scope.newUser),
+            data: JSON.stringify($scope.editUser),
             contentType: 'application/json',
             success: function (data) {
                 $scope.$apply(function () {
                     alert("User Logged In successfully");
-                    $scope.loggedInUser = $scope.newUser;
-                    $("#user").html(`Username: ${$scope.newUser.name}\nID: ${data._id}`)
+                    $scope.loggedInUser = $scope.editUser;
+                    $("#user").html(`Username: ${$scope.editUser.name}\nID: ${data._id}`)
 
-                    $scope.newUser = {};
+                    $scope.editUser = {};
                 });
             },
             error: function (jqXHR, textStatus, errorThrown) {
