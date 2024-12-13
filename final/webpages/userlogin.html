@@ -29,7 +29,7 @@
         <button type="submit">Register</button>
     </form>
 
-    <form ng-submit="readLogin()">
+    <form ng-submit="readLogin(user.id)">
         <input type="text" ng-model="editUser.id" placeholder="User ID" required>
         <button type="submit">Get Login</button>
     </form>
@@ -42,7 +42,7 @@
         <button type="submit">Update Login</button>
     </form>
 
-    <form ng-submit="deleteLogin()">
+    <form ng-submit="deleteLogin(user.id)">
         <input type="text" ng-model="editUser.id" placeholder="User ID" required>
         <button type="submit">Delete Login</button>
     </form>
