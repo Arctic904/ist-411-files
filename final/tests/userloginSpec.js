@@ -55,6 +55,7 @@ describe("Login CRUD API", () => {
 
             expect(res.status).toBe(200);
             expect(res.data).toEqual(createdObject.username);
+            createdObject._id = createdLoginId
         } catch (err) {
             fail(err);
         }
