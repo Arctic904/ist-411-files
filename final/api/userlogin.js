@@ -17,11 +17,8 @@ module.exports = {
         app.post("/create-login", async (req, res) => {
             try {
                 const bodyUser = new UserLogin(req.body);
-                const user = await UserLogin.create(bodyUser)
-                if (!user) {
-                    return res.status(403)
-                }
-                return res.status(200).send(user.username)
+                await bodyUser.save()
+                return res.status(201).send(user.username)
             } catch (err) {
                 res.status(500).send(err)
             }
